@@ -1,0 +1,23 @@
+# Secrets — never commit
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local store / demo artifacts
+demo/wp-data/
+demo/db-data/
+demo/*.sql
+*.log
+
+# OS
+.DS_Store

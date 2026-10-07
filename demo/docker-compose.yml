@@ -1,0 +1,54 @@
+# Local WooCommerce store for the live demo.
+# Usage:  cd demo && docker compose up -d db wordpress
+# Then run ./setup_store.sh
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:6.6-php8.2-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME','http://localhost:8080');
+        define('WP_SITEURL','http://localhost:8080');
+    volumes:
+      - wp-data:/var/www/html
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      - wordpress
+    user: "33:33"
+    volumes:
+      - wp-data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+volumes:
+  db-data:
+  wp-data:
