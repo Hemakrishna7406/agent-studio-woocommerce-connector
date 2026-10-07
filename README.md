@@ -201,11 +201,3 @@ that removes it are in [`docs/webhooks.md`](docs/webhooks.md).
 | [`webhooks.md`](docs/webhooks.md) | event-driven v2: webhooks + incremental sync |
 | [`demo-output.md`](docs/demo-output.md) | captured demo output |
 | [`master-plan.md`](docs/master-plan.md) | how this was planned and sequenced |
-
-## Submission checklist
-
-- [x] Public repo, no `.env`, no keys.
-- [x] `python demo/demo_offline.py` runs clean from a fresh clone.
-- [x] `python -m pytest` green (27 tests).
-- [x] GitHub Actions run green (lint + tests + offline demo).
-- [ ] Paste the repo link into the form's *Assignment submission link* field.
