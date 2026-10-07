@@ -42,7 +42,7 @@ class Config:
     MAX_PER_PAGE: int = 100
 
     @classmethod
-    def from_env(cls) -> "Config":
+    def from_env(cls) -> Config:
         return cls(
             store_url=(_env("WC_STORE_URL", required=True) or "").rstrip("/"),
             consumer_key=_env("WC_CONSUMER_KEY", required=True) or "",

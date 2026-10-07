@@ -11,11 +11,10 @@ errors, so it can decide what to do instead of crashing on a raw 500.
 from __future__ import annotations
 
 import os
-from typing import Any
 
+from connector import tools
 from connector.config import Config
 from connector.woocommerce_client import WooCommerceClient
-from connector import tools
 
 # --- MCP SDK compatibility -------------------------------------------------
 # mcp>=2 exposes MCPServer (formerly FastMCP); mcp<2 exposes FastMCP.
