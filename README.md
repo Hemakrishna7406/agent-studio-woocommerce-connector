@@ -5,6 +5,7 @@
 ![Tests](https://img.shields.io/badge/tests-27%20passing-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![M8ven Verified](https://m8ven.ai/badge/mcp/hemakrishna7406/agent-studio-woocommerce-connector?variant=verified)](https://m8ven.ai/mcp/hemakrishna7406/agent-studio-woocommerce-connector?s=readme)
 
 A read-only **MCP connector** that lets an Agent Studio agent read **orders,
 products, inventory and customers** from a WooCommerce store.
